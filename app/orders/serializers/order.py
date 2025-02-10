@@ -1,0 +1,29 @@
+from rest_framework import serializers
+
+from .order_item import OrderItemSerializer
+from ..models import Order, OrderItem
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    order_items = OrderItemSerializer(many=True)
+
+    class Meta:
+        model = Order
+        fields = ['id', 'user', 'total_price', 'is_paid', 'status', 'order_items',
+                  'created_at', 'updated_at',]
+
+    def create(self, validated_data):
+        items_data = validated_data.pop('order_items')
+        order = Order.objects.create(**validated_data)
+        total_price = 0
+
+        for item_data in items_data:
+            product = item_data['product']
+            quantity = item_data['quantity']
+            price = product.price * quantity
+            OrderItem.objects.create(order=order, product=product, quantity=quantity, price=price)
+            total_price += price
+
+        order.total_price = total_price
+        order.save()
+        return order
