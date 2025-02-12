@@ -2,7 +2,7 @@
 # BUILDER #
 ###########
 
-FROM python:3.11.6-alpine3.18 as builder
+FROM python:3.11.6-alpine3.18 AS builder
 
 WORKDIR /app
 
