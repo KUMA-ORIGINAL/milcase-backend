@@ -7,7 +7,9 @@
             "description": "High performance laptop",
             "price": "1000.00",
             "category": 1,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:00:00Z",
+            "updated_at": "2025-02-10T12:00:00Z"
         }
     },
     {
@@ -18,7 +20,9 @@
             "description": "Latest Android smartphone",
             "price": "600.00",
             "category": 1,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:10:00Z",
+            "updated_at": "2025-02-10T12:10:00Z"
         }
     },
     {
@@ -29,7 +33,9 @@
             "description": "Noise cancelling headphones",
             "price": "150.00",
             "category": 1,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:20:00Z",
+            "updated_at": "2025-02-10T12:20:00Z"
         }
     },
     {
@@ -40,7 +46,9 @@
             "description": "Comfortable cotton T-shirt",
             "price": "20.00",
             "category": 2,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:30:00Z",
+            "updated_at": "2025-02-10T12:30:00Z"
         }
     },
     {
@@ -51,7 +59,9 @@
             "description": "Stylish blue jeans",
             "price": "40.00",
             "category": 2,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:40:00Z",
+            "updated_at": "2025-02-10T12:40:00Z"
         }
     },
     {
@@ -62,7 +72,9 @@
             "description": "Warm winter jacket",
             "price": "70.00",
             "category": 2,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T12:50:00Z",
+            "updated_at": "2025-02-10T12:50:00Z"
         }
     },
     {
@@ -73,7 +85,9 @@
             "description": "A thrilling mystery novel",
             "price": "15.00",
             "category": 3,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:00:00Z",
+            "updated_at": "2025-02-10T13:00:00Z"
         }
     },
     {
@@ -84,7 +98,9 @@
             "description": "A gripping sci-fi adventure",
             "price": "18.00",
             "category": 3,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:10:00Z",
+            "updated_at": "2025-02-10T13:10:00Z"
         }
     },
     {
@@ -95,7 +111,9 @@
             "description": "Delicious recipes for every occasion",
             "price": "25.00",
             "category": 3,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:20:00Z",
+            "updated_at": "2025-02-10T13:20:00Z"
         }
     },
     {
@@ -106,7 +124,9 @@
             "description": "High-speed blender for smoothies",
             "price": "120.00",
             "category": 4,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:30:00Z",
+            "updated_at": "2025-02-10T13:30:00Z"
         }
     },
     {
@@ -117,7 +137,9 @@
             "description": "Compact microwave oven",
             "price": "80.00",
             "category": 4,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:40:00Z",
+            "updated_at": "2025-02-10T13:40:00Z"
         }
     },
     {
@@ -128,7 +150,9 @@
             "description": "Automatic toaster for your kitchen",
             "price": "30.00",
             "category": 4,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T13:50:00Z",
+            "updated_at": "2025-02-10T13:50:00Z"
         }
     },
     {
@@ -139,7 +163,9 @@
             "description": "Soft and cuddly teddy bear",
             "price": "10.00",
             "category": 5,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:00:00Z",
+            "updated_at": "2025-02-10T14:00:00Z"
         }
     },
     {
@@ -150,7 +176,9 @@
             "description": "Cute and colorful doll",
             "price": "12.00",
             "category": 5,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:10:00Z",
+            "updated_at": "2025-02-10T14:10:00Z"
         }
     },
     {
@@ -161,7 +189,9 @@
             "description": "Battery-operated toy car",
             "price": "25.00",
             "category": 5,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:20:00Z",
+            "updated_at": "2025-02-10T14:20:00Z"
         }
     },
     {
@@ -172,7 +202,9 @@
             "description": "Quadcopter drone with camera",
             "price": "250.00",
             "category": 1,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:30:00Z",
+            "updated_at": "2025-02-10T14:30:00Z"
         }
     },
     {
@@ -183,7 +215,9 @@
             "description": "Fitness tracker smartwatch",
             "price": "100.00",
             "category": 1,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:40:00Z",
+            "updated_at": "2025-02-10T14:40:00Z"
         }
     },
     {
@@ -194,7 +228,9 @@
             "description": "Warm and cozy sweater",
             "price": "45.00",
             "category": 2,
-            "is_hidden": false
+            "is_hidden": false,
+            "created_at": "2025-02-10T14:50:00Z",
+            "updated_at": "2025-02-10T14:50:00Z"
         }
     },
     {
@@ -205,18 +241,22 @@
             "description": "Decorative ceramic vase",
             "price": "35.00",
             "category": 4,
-            "is_hidden": true
+            "is_hidden": true,
+            "created_at": "2025-02-10T15:00:00Z",
+            "updated_at": "2025-02-10T15:00:00Z"
         }
     },
     {
         "model": "products.product",
         "pk": 20,
         "fields": {
-            "name": "Puzzle",
-            "description": "Fun and challenging jigsaw puzzle",
-            "price": "20.00",
+            "name": "Chess Set",
+            "description": "Wooden chess set with board",
+            "price": "55.00",
             "category": 5,
-            "is_hidden": true
+            "is_hidden": false,
+            "created_at": "2025-02-10T15:10:00Z",
+            "updated_at": "2025-02-10T15:10:00Z"
         }
     }
 ]
