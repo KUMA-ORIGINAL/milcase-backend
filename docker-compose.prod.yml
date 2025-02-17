@@ -49,17 +49,17 @@ services:
       - certs:/etc/letsencrypt
     depends_on:
       - backend
-      - frontend
-
-  frontend:
-    build:
-      context: ../milcase/
-      dockerfile: Dockerfile
-    restart: always
-    depends_on:
-      - backend
-    volumes:
-      - static_volume:/frontend_static
+#      - frontend
+#
+#  frontend:
+#    build:
+#      context: ../milcase/
+#      dockerfile: Dockerfile
+#    restart: always
+#    depends_on:
+#      - backend
+#    volumes:
+#      - static_volume:/frontend_static
 
 volumes:
   database-storage:
