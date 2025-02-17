@@ -288,6 +288,11 @@ UNFOLD = {
                 "title": _("Навигация"),
                 "items": [
                     {
+                        "title": _("Рекламные слайды"),
+                        "icon": "newspaper",
+                        "link": reverse_lazy("admin:account_adslide_changelist"),
+                    },
+                    {
                         "title": _("Категории"),
                         "icon": "category",
                         "link": reverse_lazy("admin:products_category_changelist"),

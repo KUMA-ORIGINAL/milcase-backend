@@ -18,7 +18,15 @@ class Order(models.Model):
     status = models.CharField(
         max_length=50,
         default='ожидание',
-        verbose_name="Статус платежа"
+        verbose_name="Статус платежа",
+        blank=True,
+        null=True
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='orders',
+        verbose_name="Пользователь"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -27,12 +35,6 @@ class Order(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name="Дата обновления"
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='orders',
-        verbose_name="Пользователь"
     )
 
     def __str__(self):

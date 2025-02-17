@@ -4,13 +4,13 @@ from .order_item import OrderItemSerializer
 from ..models import Order, OrderItem
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class OrderCreateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     order_items = OrderItemSerializer(many=True)
 
     class Meta:
         model = Order
-        fields = ['id', 'user', 'total_price', 'is_paid', 'status', 'order_items',
-                  'created_at', 'updated_at',]
+        fields = ['id', 'user', 'order_items']
 
     def create(self, validated_data):
         items_data = validated_data.pop('order_items')
@@ -27,3 +27,11 @@ class OrderSerializer(serializers.ModelSerializer):
         order.total_price = total_price
         order.save()
         return order
+
+
+class OrderListSerializer(serializers.ModelSerializer):
+    order_items = OrderItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Order
+        fields = ['id', 'user', 'total_price', 'is_paid', 'status', 'order_items', 'created_at', 'updated_at']

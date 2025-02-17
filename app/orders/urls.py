@@ -5,7 +5,7 @@ from orders.views import OrderViewSet
 from orders.views.payment import CreatePaymentView, stripe_webhook
 
 router = DefaultRouter()
-router.register(r'orders', OrderViewSet)
+router.register(r'orders/me', OrderViewSet, basename='order-me')
 
 urlpatterns = [
     path('', include(router.urls)),

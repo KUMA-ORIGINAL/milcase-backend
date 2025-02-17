@@ -1,9 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import MeViewSet
 from djoser.views import UserViewSet
 
+from .views import MeViewSet, AdSlideViewSet, FavoriteViewSet
+
+
 router = DefaultRouter()
+router.register('ad-slides', AdSlideViewSet)
+router.register('favorites', FavoriteViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

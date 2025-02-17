@@ -1,6 +1,4 @@
 from django.contrib import admin
-from django.shortcuts import redirect
-from django.urls import reverse
 
 from unfold.admin import ModelAdmin as UnfoldModelAdmin
 
@@ -15,3 +13,6 @@ class BirthdayDiscountSettingsAdmin(UnfoldModelAdmin):
         if BirthdayDiscountSettings.objects.exists():
             return False
         return super().has_add_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return False  # Отключить возможность удаления

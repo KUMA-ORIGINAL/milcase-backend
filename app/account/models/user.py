@@ -46,6 +46,8 @@ class User(AbstractUser):
                                 options={'quality': 60},
                                 blank=True)
     birthdate = models.DateField(blank=True, null=True, verbose_name='День рождения')
+    points = models.PositiveIntegerField(default=0, verbose_name='Накопленные баллы')
+    quantity_of_cases = models.PositiveIntegerField(default=0, verbose_name='Количество купленных чехлов')
 
     username = None
     USERNAME_FIELD = "email"
