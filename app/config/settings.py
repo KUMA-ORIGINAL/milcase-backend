@@ -169,7 +169,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-DOMAIN = 'milcase.twc1.net'
+EMAIL_DOMAIN = 'milcase.twc1.net'
 
 SITE_NAME = 'Milcase'
 
