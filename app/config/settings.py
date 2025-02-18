@@ -36,7 +36,7 @@ DEBUG = bool(env("DEBUG", default=0))
 
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
 
-DOMAIN = env("DOMAIN")
+DOMAIN2 = env("DOMAIN")
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
@@ -169,7 +169,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-EMAIL_DOMAIN = 'milcase.twc1.net'
+DOMAIN = 'milcase.twc1.net'
 
 SITE_NAME = 'Milcase'
 
@@ -178,7 +178,7 @@ SITE_NAME = 'Milcase'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = [f"https://{DOMAIN}", f"http://{DOMAIN}"]
+CSRF_TRUSTED_ORIGINS = [f"https://{DOMAIN2}", f"http://{DOMAIN2}"]
 
 AUTH_USER_MODEL = 'account.User'
 
