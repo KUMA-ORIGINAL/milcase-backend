@@ -1,12 +1,14 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from ..models import Favorite
+from products.serializers import ProductListSerializer
+
+User = get_user_model()
 
 
-class FavoriteSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+class FavoriteListSerializer(serializers.ModelSerializer):
+    favorite_products = ProductListSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Favorite
-        fields = ['user', 'product']
-        read_only_fields = ['user']
+        model = User
+        fields = ('favorite_products',)

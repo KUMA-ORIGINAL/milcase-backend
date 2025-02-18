@@ -169,6 +169,10 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+DOMAIN = 'milcase.twc1.net'
+
+SITE_NAME = 'Milcase'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -234,6 +238,9 @@ DJOSER = {
     #     'user': 'account.serializers.UserSerializer',
     #     'current_user': 'account.serializers.UserSerializer',
     # },
+    'EMAIL': {
+        'activation': 'account.email.ActivationEmail',
+    },
 }
 
 UNFOLD = {

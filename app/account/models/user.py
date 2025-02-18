@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField
 from pilkit.processors import ResizeToFill
 
+from products.models import Product
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -48,6 +50,8 @@ class User(AbstractUser):
     birthdate = models.DateField(blank=True, null=True, verbose_name='День рождения')
     points = models.PositiveIntegerField(default=0, verbose_name='Накопленные баллы')
     quantity_of_cases = models.PositiveIntegerField(default=0, verbose_name='Количество купленных чехлов')
+
+    favorite_products = models.ManyToManyField(Product, blank=True)
 
     username = None
     USERNAME_FIELD = "email"
