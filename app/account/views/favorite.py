@@ -32,14 +32,14 @@ class FavoriteProductsViewSet(viewsets.GenericViewSet,
 
     def retrieve(self, request, *args, **kwargs):
         user = request.user
-        article = get_object_or_404(Product, pk=kwargs.get('article_id'))
+        article = get_object_or_404(Product, pk=kwargs.get('product_id'))
 
         if article in user.favorite_products.all():
             user.favorite_products.remove(article)
-            return Response({'message': 'Article removed from favorites'},
+            return Response({'message': 'Product removed from favorites'},
                             status=status.HTTP_200_OK)
         user.favorite_products.add(article)
-        return Response({'message': 'Article added to favorites'},
+        return Response({'message': 'Product added to favorites'},
                         status=status.HTTP_200_OK)
 
     def list(self, request, *args, **kwargs):
