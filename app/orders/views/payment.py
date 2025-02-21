@@ -13,21 +13,36 @@ from orders.models import Order
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @extend_schema(tags=['Payment'])
-class CreatePaymentView(APIView):
-
+class CreateCheckoutSessionView(APIView):
     def post(self, request, order_id):
         order = get_object_or_404(Order, id=order_id)
 
         try:
-            payment_intent = stripe.PaymentIntent.create(
-                amount=int(order.total_price * 100),  # Сумма в центах
-                currency='usd',
-                metadata={'order_id': order.id}
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        'price_data': {
+                            'currency': 'usd',
+                            'product_data': {
+                                'name': 'Payment milcase',  # Название заказа или продукта
+                            },
+                            'unit_amount': int(order.total_price * 100),  # Цена в центах
+                        },
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                metadata={
+                    "order_id": order.id
+                },
+                success_url=settings.PAYMENT_SUCCESS_URL,  # URL после успешной оплаты
+                cancel_url=settings.PAYMENT_CANCEL_URL,    # URL после отмены оплаты
             )
             return Response({
-                'client_secret': payment_intent['client_secret'],
-                'order_id': order.id
+                'checkout_url': checkout_session.url
             }, status=status.HTTP_200_OK)
+
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -49,8 +64,8 @@ def stripe_webhook(request):
 
     # Обработка события успешной оплаты
     if event['type'] == 'payment_intent.succeeded':
-        payment_intent = event['data']['object']
-        order_id = payment_intent.metadata.get('order_id')
+        session = event['data']['object']
+        order_id = session.metadata.get('order_id')
 
         if order_id:
             order = Order.objects.get(id=order_id)
