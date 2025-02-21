@@ -6,5 +6,5 @@ from products.serializers import CategorySerializer
 
 @extend_schema(tags=['Category'])
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Category.objects.all()
+    queryset = Category.objects.filter(parent__isnull=True)
     serializer_class = CategorySerializer
