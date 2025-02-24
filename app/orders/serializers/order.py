@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from .order_item import OrderItemSerializer
+from .order_item import OrderItemCreateSerializer, OrderItemListSerializer
 from ..models import Order, OrderItem
 
 
 class OrderCreateSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    order_items = OrderItemSerializer(many=True)
+    order_items = OrderItemCreateSerializer(many=True)
 
     class Meta:
         model = Order
@@ -30,7 +30,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
 
 
 class OrderListSerializer(serializers.ModelSerializer):
-    order_items = OrderItemSerializer(many=True, read_only=True)
+    order_items = OrderItemListSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
