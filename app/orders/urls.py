@@ -10,5 +10,5 @@ router.register(r'orders/me', OrderViewSet, basename='order-me')
 urlpatterns = [
     path('', include(router.urls)),
     path('create-payment/<int:order_id>/', CreateCheckoutSessionView.as_view(), name='create-payment'),
-    path('stripe-webhook/', stripe_webhook, name='stripe-webhook'),
+    path('stripe/webhook/', stripe_webhook, name='stripe-webhook'),
 ]

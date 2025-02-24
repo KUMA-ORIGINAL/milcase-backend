@@ -5,19 +5,21 @@ User = get_user_model()
 
 
 class Order(models.Model):
+    class Status(models.TextChoices):
+        PENDING = 'ожидание', 'Ожидает'
+        PAID = 'оплачен', 'Оплачен'
+        CANCELLED = 'отменен', 'Отменен'
+
     total_price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         default=0,
         verbose_name="Общая стоимость"
     )
-    is_paid = models.BooleanField(
-        default=False,
-        verbose_name="Оплачен"
-    )
     status = models.CharField(
         max_length=50,
-        default='ожидание',
+        choices=Status,
+        default=Status.PENDING,
         verbose_name="Статус платежа",
         blank=True,
         null=True

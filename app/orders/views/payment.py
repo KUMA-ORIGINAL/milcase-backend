@@ -47,6 +47,7 @@ class CreateCheckoutSessionView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
+@extend_schema(tags=['Payment'])
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -69,7 +70,7 @@ def stripe_webhook(request):
 
         if order_id:
             order = Order.objects.get(id=order_id)
-            order.status = 'paid'
+            order.status = Order.Status.PAID
             order.save()
 
     return HttpResponse(status=200)
