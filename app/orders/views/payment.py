@@ -46,7 +46,6 @@ class CreateCheckoutSessionView(APIView):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-
 @extend_schema(tags=['Payment'])
 @csrf_exempt
 def stripe_webhook(request):
