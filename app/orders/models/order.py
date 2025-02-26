@@ -48,8 +48,7 @@ class Order(models.Model):
         verbose_name_plural = "Заказы"
 
     def apply_birthday_discount(self):
-        user_profile = self.user.profile  # Профиль пользователя
-        birthday_discount = user_profile.get_birthday_discount()
+        birthday_discount = self.user.get_birthday_discount()
 
         if birthday_discount:
             discount_amount = (self.total_price * birthday_discount) / 100
