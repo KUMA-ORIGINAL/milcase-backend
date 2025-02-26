@@ -15,6 +15,7 @@ class Product(models.Model):
                               blank=True, verbose_name=_("Фото"))
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products', verbose_name=_("Категория"))
     is_hidden = models.BooleanField(default=False, verbose_name=_("Скрыт"))
+    is_case = models.BooleanField(default=False, verbose_name=_("Чехол"))
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Дата создания"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Дата обновления"))

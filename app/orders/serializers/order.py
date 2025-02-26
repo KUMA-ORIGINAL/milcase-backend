@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from rest_framework import serializers
 
 from .order_item import OrderItemCreateSerializer, OrderItemListSerializer
@@ -17,16 +19,45 @@ class OrderCreateSerializer(serializers.ModelSerializer):
         order = Order.objects.create(**validated_data)
         total_price = 0
 
+        # Количество чехлов, которые должны быть бесплатными
+        free_case_count = 0
+
         for item_data in items_data:
             product = item_data['product']
             quantity = item_data['quantity']
             price = product.price * quantity
-            OrderItem.objects.create(order=order, product=product, quantity=quantity, price=price)
-            total_price += price
 
+            # Проверяем, является ли продукт чехлом
+            if product.is_case:
+                # Проверяем, сколько бесплатных чехлов можно использовать
+                if free_case_count < self.user.free_cases:
+                    is_free = True
+                    free_case_count += 1
+                else:
+                    is_free = False
+            else:
+                is_free = False
+
+            # Создаем элемент заказа с учетом поля is_free
+            OrderItem.objects.create(
+                order=order,
+                product=product,
+                quantity=quantity,
+                price=price if not is_free else 0,  # Бесплатный товар будет стоить 0
+                is_free=is_free
+            )
+            total_price += price if not is_free else 0  # Не добавляем цену бесплатных товаров в общую стоимость
+
+        # Применяем скидки и сохраняем заказ
         order.total_price = total_price
+        order.free_case_count = free_case_count
         order.apply_birthday_discount()
         order.save()
+
+        # Вычитаем использованные бесплатные чехлы из поля free_cases
+        self.user.free_cases -= free_case_count
+        self.user.save()  # Сохраняем изменения в модели User
+
         return order
 
 
@@ -35,4 +66,4 @@ class OrderListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'total_price', 'status', 'order_items', 'created_at', 'updated_at']
+        fields = ['id', 'total_price', 'discount', 'free_case_count', 'status', 'order_items', 'created_at', 'updated_at']

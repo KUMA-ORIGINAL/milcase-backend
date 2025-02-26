@@ -40,7 +40,7 @@ class UserAdmin(UserAdmin, UnfoldModelAdmin):
         ('required', {
                  'fields': ('first_name', 'last_name', 'photo')}),
         ('Доп. Информация', {
-            'fields': ('birthdate', 'points', 'quantity_of_cases')}),
+            'fields': ('birthdate', 'points', 'quantity_of_cases', 'free_cases')}),
     )
     add_fieldsets = (
         (

@@ -14,7 +14,7 @@ class ProductAdmin(UnfoldModelAdmin):
     list_display = ('id', 'name', 'price', 'category', 'is_hidden', 'display_photo')
     list_display_links = ('id', 'name')
     list_editable = ('is_hidden',)
-    list_filter = ('category',)
+    list_filter = ('category', 'is_case')
     search_fields = ('name',)
 
     @display(description=_("Фото"))

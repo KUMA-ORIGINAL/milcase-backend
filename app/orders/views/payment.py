@@ -72,6 +72,9 @@ def stripe_webhook(request):
         if order_id:
             order = Order.objects.get(id=order_id)
             order.status = Order.Status.PAID
+
+            order.user.update_case_counts_after_order(order)
+
             order.save()
 
     return HttpResponse(status=200)
