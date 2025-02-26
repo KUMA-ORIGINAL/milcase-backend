@@ -12,6 +12,7 @@ from orders.models import Order
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 @extend_schema(tags=['Payment'])
 class CreateCheckoutSessionView(APIView):
     def post(self, request, order_id):
@@ -46,6 +47,7 @@ class CreateCheckoutSessionView(APIView):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+
 @extend_schema(tags=['Payment'])
 @csrf_exempt
 def stripe_webhook(request):
@@ -63,8 +65,8 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     # Обработка события успешной оплаты
-    if event['type'] == 'payment_intent.succeeded':
-        session = event['data']['object']
+    if event.type == 'checkout.session.completed':
+        session = event.data.object
         order_id = session.metadata.get('order_id')
 
         if order_id:
