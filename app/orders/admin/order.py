@@ -8,7 +8,7 @@ from ..models import Order, OrderItem
 class OrderItemInline(TabularInline):
     model = OrderItem
     extra = 1
-    fields = ('product', 'quantity', 'price')
+    fields = ('product', 'quantity', 'price', 'is_free')
 
 
 @admin.register(Order)
@@ -21,7 +21,7 @@ class OrderAdmin(UnfoldModelAdmin):
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('user', 'total_price', 'status')
+            'fields': ('user', 'total_price', 'discount', 'free_case_count', 'status')
         }),
         ('Даты', {
             'fields': ('created_at', 'updated_at'),
