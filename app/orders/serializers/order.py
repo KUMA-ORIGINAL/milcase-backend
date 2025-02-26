@@ -25,6 +25,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             total_price += price
 
         order.total_price = total_price
+        order.apply_birthday_discount()
         order.save()
         return order
 

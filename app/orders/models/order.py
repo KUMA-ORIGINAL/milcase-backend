@@ -16,6 +16,7 @@ class Order(models.Model):
         default=0,
         verbose_name="Общая стоимость"
     )
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, verbose_name='Скидка')
     status = models.CharField(
         max_length=50,
         choices=Status,
@@ -45,3 +46,17 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+
+    def apply_birthday_discount(self):
+        user_profile = self.user.profile  # Профиль пользователя
+        birthday_discount = user_profile.get_birthday_discount()
+
+        if birthday_discount:
+            discount_amount = (self.total_price * birthday_discount) / 100
+            self.discount = round(discount_amount)  # Округляем скидку до целого числа
+
+            self.total_price -= self.discount  # Применяем скидку к общей стоимости
+
+            self.total_price = round(self.total_price)
+
+        self.save()

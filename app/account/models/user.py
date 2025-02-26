@@ -2,11 +2,13 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField
 from pilkit.processors import ResizeToFill
 
 from products.models import Product
+from promotions.models import BirthdayDiscountSettings
 
 
 class UserManager(BaseUserManager):
@@ -68,3 +70,12 @@ class User(AbstractUser):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+    def get_birthday_discount(self):
+        today = timezone.localdate()
+
+        if today.month == self.birthdate.month and today.day == self.birthdate.day:
+            discount = BirthdayDiscountSettings.objects.first()
+            if discount:
+                return discount.discount_percentage
+        return 0
