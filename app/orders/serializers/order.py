@@ -30,7 +30,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             # Проверяем, является ли продукт чехлом
             if product.is_case:
                 # Проверяем, сколько бесплатных чехлов можно использовать
-                if free_case_count < self.user.free_cases:
+                if free_case_count < order.user.free_cases:
                     is_free = True
                     free_case_count += 1
                 else:
@@ -55,8 +55,8 @@ class OrderCreateSerializer(serializers.ModelSerializer):
         order.save()
 
         # Вычитаем использованные бесплатные чехлы из поля free_cases
-        self.user.free_cases -= free_case_count
-        self.user.save()  # Сохраняем изменения в модели User
+        order.user.free_cases -= free_case_count
+        order.user.save()  # Сохраняем изменения в модели User
 
         return order
 
