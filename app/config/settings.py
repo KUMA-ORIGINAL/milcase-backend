@@ -335,6 +335,16 @@ UNFOLD = {
                 ],
             },
             {
+                "title": _("Модели телефонов"),
+                "items": [
+                    {
+                        "title": _("Модели телефонов"),
+                        "icon": "phone",
+                        "link": reverse_lazy("admin:account_phonemodel_changelist"),
+                    },
+                ],
+            },
+            {
                 "title": _("Пользователи & Группы"),
                 "items": [
                     {
