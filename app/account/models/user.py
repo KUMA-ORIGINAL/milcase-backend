@@ -50,6 +50,8 @@ class User(AbstractUser):
                                 options={'quality': 60},
                                 blank=True)
     birthdate = models.DateField(blank=True, null=True, verbose_name='День рождения')
+    phone_model = models.ForeignKey('PhoneModel', on_delete=models.SET_NULL,
+                                    null=True, blank=True, verbose_name="Модель телефона")
     points = models.PositiveIntegerField(default=0, verbose_name='Накопленные баллы')
     quantity_of_cases = models.PositiveIntegerField(default=0, verbose_name='Количество купленных чехлов')
     free_cases = models.PositiveIntegerField(default=0, verbose_name='Количество бесплатных чехлов')
@@ -58,7 +60,7 @@ class User(AbstractUser):
 
     username = None
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthdate']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthdate', 'phone_model']
 
     objects = UserManager()
 

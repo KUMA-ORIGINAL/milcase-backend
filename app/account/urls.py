@@ -2,12 +2,13 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from djoser.views import UserViewSet
 
-from .views import MeViewSet, AdSlideViewSet, FavoriteProductsViewSet
+from .views import MeViewSet, AdSlideViewSet, FavoriteProductsViewSet, PhoneModelViewSet
 
 
 router = DefaultRouter()
 router.register('ad-slides', AdSlideViewSet)
 router.register('favorites', FavoriteProductsViewSet, basename='favorites')
+router.register('phone-models', PhoneModelViewSet, basename='phone-models')
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -19,3 +20,4 @@ urlpatterns = [
     path('auth/users/reset_password_confirm/', UserViewSet.as_view({'post': 'reset_password_confirm'})),
     path('', include('djoser.urls.jwt')),
 ]
+
