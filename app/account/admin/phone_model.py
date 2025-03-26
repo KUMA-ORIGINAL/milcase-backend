@@ -7,4 +7,3 @@ from ..models import PhoneModel
 @admin.register(PhoneModel)
 class PhoneModelAdmin(UnfoldModelAdmin):
     list_display = ('brand', 'model_name')
-

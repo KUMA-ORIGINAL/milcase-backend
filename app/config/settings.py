@@ -56,6 +56,7 @@ else:
 
 INSTALLED_APPS = [
     'unfold',
+    "unfold.contrib.filters",
     
     'django.contrib.admin',
     'django.contrib.auth',
