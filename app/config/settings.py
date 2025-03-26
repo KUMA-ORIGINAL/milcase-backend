@@ -184,8 +184,8 @@ AUTH_USER_MODEL = 'account.User'
 
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
-PAYMENT_SUCCESS_URL = 'http://127.0.0.1:8000/success/'
-PAYMENT_CANCEL_URL = 'http://127.0.0.1:8000/cancel/'
+PAYMENT_SUCCESS_URL = 'https://milcase.twc1.net/profile'
+PAYMENT_CANCEL_URL = 'https://milcase.twc1.net/profile'
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
 EMAIL_HOST = 'smtp.gmail.com'
