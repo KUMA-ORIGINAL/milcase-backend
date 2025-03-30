@@ -73,7 +73,6 @@ def stripe_webhook(request):
             order.status = Order.Status.PAID
 
             order.user.update_case_counts_after_order(order)
-            order.user.update_free_cases()
 
             order.save()
 
