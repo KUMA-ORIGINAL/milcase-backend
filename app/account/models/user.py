@@ -83,12 +83,19 @@ class User(AbstractUser):
                 return discount.discount_percentage
         return 0
 
-    def update_free_cases(self):
+    def add_case(self, count=1):
         """
-        Обновляем поле `free_cases` на основе количества купленных чехлов.
-        Каждые 6 чехлов — один бесплатный.
+        Увеличиваем количество купленных чехлов и обновляем количество бесплатных чехлов.
+        Когда количество купленных чехлов достигает 6, обновляем `free_cases`.
         """
+        self.quantity_of_cases += count
+
         self.free_cases = self.quantity_of_cases // 6
+
+        # Сбросить количество купленных чехлов после достижения 6
+        if self.quantity_of_cases >= 6:
+            self.quantity_of_cases = self.quantity_of_cases % 6  # Сбрасываем до 0 после 6 чехлов
+
         self.save()
 
     def update_case_counts_after_order(self, order):
@@ -108,7 +115,7 @@ class User(AbstractUser):
         actual_case_count = total_case_count - free_case_count
 
         # Обновляем количество чехлов у пользователя
-        self.quantity_of_cases += actual_case_count  # Увеличиваем только купленные чехлы
+        self.add_case(count=actual_case_count)
         self.free_cases -= free_case_count  # Вычитаем использованные бесплатные чехлы
 
         self.save()
