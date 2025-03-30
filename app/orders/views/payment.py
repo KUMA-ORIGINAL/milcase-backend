@@ -64,7 +64,6 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         return HttpResponse(status=400)
 
-    # Обработка события успешной оплаты
     if event.type == 'checkout.session.completed':
         session = event.data.object
         order_id = session.metadata.get('order_id')
@@ -73,6 +72,7 @@ def stripe_webhook(request):
             order = Order.objects.get(id=order_id)
             order.status = Order.Status.PAID
 
+            order.user.update_free_cases()
             order.user.update_case_counts_after_order(order)
 
             order.save()

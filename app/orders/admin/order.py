@@ -30,4 +30,3 @@ class OrderAdmin(UnfoldModelAdmin):
             'classes': ('collapse',)  # Сворачиваемый блок
         }),
     )
-

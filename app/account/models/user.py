@@ -91,22 +91,6 @@ class User(AbstractUser):
         self.free_cases = self.quantity_of_cases // 6
         self.save()
 
-    def add_case(self, count=1):
-        """
-        Увеличиваем количество купленных чехлов и обновляем количество бесплатных чехлов.
-        Когда количество купленных чехлов достигает 6, обновляем `free_cases`.
-        """
-        self.quantity_of_cases += count
-
-        # Обновляем бесплатные чехлы после покупки
-        self.update_free_cases()  # Обновляем количество бесплатных чехлов
-
-        # Сбросить количество купленных чехлов после достижения 6
-        if self.quantity_of_cases >= 6:
-            self.quantity_of_cases = self.quantity_of_cases % 6  # Сбрасываем до 0 после 6 чехлов
-
-        self.save()
-
     def update_case_counts_after_order(self, order):
         """
         Обновляем количество купленных чехлов и бесплатных чехлов после завершения оплаты.
