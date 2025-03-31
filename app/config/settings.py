@@ -323,11 +323,11 @@ UNFOLD = {
             {
                 "title": _("Лояльность"),
                 "items": [
-                    {
-                        "title": _("Акции"),
-                        "icon": "sell",
-                        "link": reverse_lazy("admin:promotions_promotion_changelist"),
-                    },
+                    # {
+                    #     "title": _("Акции"),
+                    #     "icon": "sell",
+                    #     "link": reverse_lazy("admin:promotions_promotion_changelist"),
+                    # },
                     {
                         "title": _("Настройка скидки на день рождение"),
                         "icon": "celebration",
