@@ -27,9 +27,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             quantity = item_data['quantity']
             price = product.price * quantity
 
-            # Проверяем, является ли продукт чехлом
             if product.is_case:
-                # Проверяем, сколько бесплатных чехлов можно использовать
                 if free_case_count < order.user.free_cases:
                     is_free = True
                     free_case_count += 1
@@ -38,7 +36,6 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             else:
                 is_free = False
 
-            # Создаем элемент заказа с учетом поля is_free
             OrderItem.objects.create(
                 order=order,
                 product=product,
@@ -48,17 +45,13 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             )
             total_price += price if not is_free else 0  # Не добавляем цену бесплатных товаров в общую стоимость
 
-        # Применяем скидки и сохраняем заказ
         order.total_price = total_price
         order.free_case_count = free_case_count
         order.apply_birthday_discount()
         order.save()
 
-        # Вычитаем использованные бесплатные чехлы из поля free_cases
-        order.user.free_cases -= free_case_count
-        order.user.save()  # Сохраняем изменения в модели User
-
         return order
+
 
 
 class OrderListSerializer(serializers.ModelSerializer):
