@@ -13,7 +13,7 @@ class Product(models.Model):
                               format='JPEG',
                               options={'quality': 60},
                               blank=True, verbose_name=_("Фото"))
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products', verbose_name=_("Категория"))
+    category = models.ManyToManyField('Category', related_name='products', verbose_name=_("Категории"))
     is_hidden = models.BooleanField(default=False, verbose_name=_("Скрыт"))
     is_case = models.BooleanField(default=False, verbose_name=_("Чехол"))
 

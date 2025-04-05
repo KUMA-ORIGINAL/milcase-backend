@@ -15,3 +15,10 @@ class CategorySerializer(serializers.ModelSerializer):
         if children.exists():
             return CategorySerializer(children, many=True).data
         return []
+
+
+class CategoryProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = ('id', 'name')

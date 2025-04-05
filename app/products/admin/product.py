@@ -11,11 +11,16 @@ from ..models import Product
 @admin.register(Product)
 class ProductAdmin(UnfoldModelAdmin):
     compressed_fields = True
-    list_display = ('id', 'name', 'price', 'category', 'is_hidden', 'display_photo')
+    list_display = ('id', 'name', 'price', 'display_categories', 'is_hidden', 'display_photo')
     list_display_links = ('id', 'name')
     list_editable = ('is_hidden',)
     list_filter = ('category', 'is_case')
     search_fields = ('name',)
+    autocomplete_fields = ('category',)
+
+    @display(description=_("Категории"))
+    def display_categories(self, obj):
+        return ", ".join([cat.name for cat in obj.category.all()])
 
     @display(description=_("Фото"))
     def display_photo(self, obj):
