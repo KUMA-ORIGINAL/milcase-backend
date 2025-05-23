@@ -24,7 +24,7 @@ class CreateCheckoutSessionView(APIView):
                 line_items=[
                     {
                         'price_data': {
-                            'currency': 'usd',
+                            'currency': 'KGS',
                             'product_data': {
                                 'name': 'Payment milcase',  # Название заказа или продукта
                             },
