@@ -39,8 +39,16 @@ class UserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+CLUSTER_K2 = "K2"
+CLUSTER_K3 = "K3"
+CLUSTER_K4 = "K4"
 
 class User(AbstractUser):
+    CLUSTER_CHOICES = [
+        (CLUSTER_K2, "Подарочники"),
+        (CLUSTER_K3, "Частые"),
+        (CLUSTER_K4, "Спящие"),
+    ]
     email = models.EmailField(_("email address"), unique=True)
     first_name = models.CharField(max_length=100, verbose_name=_("First Name"), blank=True)
     last_name = models.CharField(max_length=100, verbose_name=_("Last Name"), blank=True)
@@ -56,7 +64,17 @@ class User(AbstractUser):
     quantity_of_cases = models.PositiveIntegerField(default=0, verbose_name='Количество купленных чехлов')
     free_cases = models.PositiveIntegerField(default=0, verbose_name='Количество бесплатных чехлов')
 
-    favorite_products = models.ManyToManyField(Product, blank=True)
+    cluster = models.CharField(max_length=10, choices=CLUSTER_CHOICES, blank=True, null=True, verbose_name="Кластер")
+    last_cluster_update = models.DateTimeField('Дата последнего обновления кластера', auto_now=True)
+
+    welcome_discount = models.PositiveSmallIntegerField(default=0, verbose_name="Welcome скидка")
+    entered_k4_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name="Дата входа в кластер K4(спящие)"
+    )
+
+    favorite_products = models.ManyToManyField(Product, blank=True, verbose_name='избранные товары')
 
     username = None
     USERNAME_FIELD = "email"

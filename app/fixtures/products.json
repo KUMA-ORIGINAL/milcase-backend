@@ -3,10 +3,10 @@
         "model": "products.product",
         "pk": 1,
         "fields": {
-            "name": "Laptop",
-            "description": "High performance laptop",
-            "price": "1000.00",
-            "category": 1,
+            "name": "iPhone 15 Pro Silicone Case",
+            "description": "Official Apple silicone case for iPhone 15 Pro.",
+            "price": "49.99",
+            "category": [1],
             "is_hidden": false,
             "created_at": "2025-02-10T12:00:00Z",
             "updated_at": "2025-02-10T12:00:00Z"
@@ -16,10 +16,10 @@
         "model": "products.product",
         "pk": 2,
         "fields": {
-            "name": "Smartphone",
-            "description": "Latest Android smartphone",
-            "price": "600.00",
-            "category": 1,
+            "name": "Clear MagSafe Case for iPhone 15",
+            "description": "Crystal-clear protective case with MagSafe support.",
+            "price": "39.99",
+            "category": [1],
             "is_hidden": false,
             "created_at": "2025-02-10T12:10:00Z",
             "updated_at": "2025-02-10T12:10:00Z"
@@ -29,10 +29,10 @@
         "model": "products.product",
         "pk": 3,
         "fields": {
-            "name": "Headphones",
-            "description": "Noise cancelling headphones",
-            "price": "150.00",
-            "category": 1,
+            "name": "Leather Case iPhone 14 Pro Max",
+            "description": "Premium leather case for iPhone 14 Pro Max.",
+            "price": "59.99",
+            "category": [1],
             "is_hidden": false,
             "created_at": "2025-02-10T12:20:00Z",
             "updated_at": "2025-02-10T12:20:00Z"
@@ -42,10 +42,10 @@
         "model": "products.product",
         "pk": 4,
         "fields": {
-            "name": "T-shirt",
-            "description": "Comfortable cotton T-shirt",
-            "price": "20.00",
-            "category": 2,
+            "name": "Rugged Case for iPhone 13",
+            "description": "Shockproof rugged case with military-grade protection.",
+            "price": "29.99",
+            "category": [1],
             "is_hidden": false,
             "created_at": "2025-02-10T12:30:00Z",
             "updated_at": "2025-02-10T12:30:00Z"
@@ -55,208 +55,13 @@
         "model": "products.product",
         "pk": 5,
         "fields": {
-            "name": "Jeans",
-            "description": "Stylish blue jeans",
-            "price": "40.00",
-            "category": 2,
+            "name": "Slim Transparent iPhone SE Case",
+            "description": "Minimalist slim-fit case for iPhone SE (2022).",
+            "price": "19.99",
+            "category": [1],
             "is_hidden": false,
             "created_at": "2025-02-10T12:40:00Z",
             "updated_at": "2025-02-10T12:40:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 6,
-        "fields": {
-            "name": "Jacket",
-            "description": "Warm winter jacket",
-            "price": "70.00",
-            "category": 2,
-            "is_hidden": false,
-            "created_at": "2025-02-10T12:50:00Z",
-            "updated_at": "2025-02-10T12:50:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 7,
-        "fields": {
-            "name": "Mystery Novel",
-            "description": "A thrilling mystery novel",
-            "price": "15.00",
-            "category": 3,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:00:00Z",
-            "updated_at": "2025-02-10T13:00:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 8,
-        "fields": {
-            "name": "Science Fiction Book",
-            "description": "A gripping sci-fi adventure",
-            "price": "18.00",
-            "category": 3,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:10:00Z",
-            "updated_at": "2025-02-10T13:10:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 9,
-        "fields": {
-            "name": "Cookbook",
-            "description": "Delicious recipes for every occasion",
-            "price": "25.00",
-            "category": 3,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:20:00Z",
-            "updated_at": "2025-02-10T13:20:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 10,
-        "fields": {
-            "name": "Blender",
-            "description": "High-speed blender for smoothies",
-            "price": "120.00",
-            "category": 4,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:30:00Z",
-            "updated_at": "2025-02-10T13:30:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 11,
-        "fields": {
-            "name": "Microwave",
-            "description": "Compact microwave oven",
-            "price": "80.00",
-            "category": 4,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:40:00Z",
-            "updated_at": "2025-02-10T13:40:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 12,
-        "fields": {
-            "name": "Toaster",
-            "description": "Automatic toaster for your kitchen",
-            "price": "30.00",
-            "category": 4,
-            "is_hidden": false,
-            "created_at": "2025-02-10T13:50:00Z",
-            "updated_at": "2025-02-10T13:50:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 13,
-        "fields": {
-            "name": "Teddy Bear",
-            "description": "Soft and cuddly teddy bear",
-            "price": "10.00",
-            "category": 5,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:00:00Z",
-            "updated_at": "2025-02-10T14:00:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 14,
-        "fields": {
-            "name": "Doll",
-            "description": "Cute and colorful doll",
-            "price": "12.00",
-            "category": 5,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:10:00Z",
-            "updated_at": "2025-02-10T14:10:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 15,
-        "fields": {
-            "name": "Toy Car",
-            "description": "Battery-operated toy car",
-            "price": "25.00",
-            "category": 5,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:20:00Z",
-            "updated_at": "2025-02-10T14:20:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 16,
-        "fields": {
-            "name": "Drone",
-            "description": "Quadcopter drone with camera",
-            "price": "250.00",
-            "category": 1,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:30:00Z",
-            "updated_at": "2025-02-10T14:30:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 17,
-        "fields": {
-            "name": "Smartwatch",
-            "description": "Fitness tracker smartwatch",
-            "price": "100.00",
-            "category": 1,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:40:00Z",
-            "updated_at": "2025-02-10T14:40:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 18,
-        "fields": {
-            "name": "Sweater",
-            "description": "Warm and cozy sweater",
-            "price": "45.00",
-            "category": 2,
-            "is_hidden": false,
-            "created_at": "2025-02-10T14:50:00Z",
-            "updated_at": "2025-02-10T14:50:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 19,
-        "fields": {
-            "name": "Vase",
-            "description": "Decorative ceramic vase",
-            "price": "35.00",
-            "category": 4,
-            "is_hidden": true,
-            "created_at": "2025-02-10T15:00:00Z",
-            "updated_at": "2025-02-10T15:00:00Z"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 20,
-        "fields": {
-            "name": "Chess Set",
-            "description": "Wooden chess set with board",
-            "price": "55.00",
-            "category": 5,
-            "is_hidden": false,
-            "created_at": "2025-02-10T15:10:00Z",
-            "updated_at": "2025-02-10T15:10:00Z"
         }
     }
 ]

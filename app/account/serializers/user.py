@@ -13,7 +13,7 @@ class MeSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'first_name', 'last_name', 'photo', 'birthdate', 'phone_model',
-                  'points', 'quantity_of_cases', 'free_cases', 'birthday_discount')
+                  'points', 'quantity_of_cases', 'free_cases', 'birthday_discount', 'cluster', 'welcome_discount')
 
     def get_birthday_discount(self, obj):
         return obj.get_birthday_discount()

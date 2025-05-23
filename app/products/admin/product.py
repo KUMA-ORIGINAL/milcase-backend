@@ -17,6 +17,7 @@ class ProductAdmin(UnfoldModelAdmin):
     list_filter = ('category', 'is_case')
     search_fields = ('name',)
     autocomplete_fields = ('category',)
+    readonly_fields = ('created_at', 'updated_at')
 
     @display(description=_("Категории"))
     def display_categories(self, obj):

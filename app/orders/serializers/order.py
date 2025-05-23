@@ -17,9 +17,8 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         items_data = validated_data.pop('order_items')
         order = Order.objects.create(**validated_data)
+        user = order.user
         total_price = 0
-
-        # Количество чехлов, которые должны быть бесплатными
         free_case_count = 0
 
         for item_data in items_data:
@@ -28,7 +27,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             price = product.price * quantity
 
             if product.is_case:
-                if free_case_count < order.user.free_cases:
+                if free_case_count < user.free_cases:
                     is_free = True
                     free_case_count += 1
                 else:
@@ -45,13 +44,22 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             )
             total_price += price if not is_free else 0  # Не добавляем цену бесплатных товаров в общую стоимость
 
-        order.total_price = total_price
+        welcome_discount = user.welcome_discount or 0
+        welcome_discount_amount = round((total_price * welcome_discount) / 100)
+        total_price -= welcome_discount_amount
+
+        # Birthday скидка
+        birthday_discount = user.get_birthday_discount() or 0
+        birthday_discount_amount = round((total_price * birthday_discount) / 100)
+        total_price -= birthday_discount_amount
+
+        order.total_price = round(total_price)
+        order.discount = welcome_discount_amount + birthday_discount_amount
         order.free_case_count = free_case_count
-        order.apply_birthday_discount()
+        order.welcome_discount = welcome_discount
         order.save()
 
         return order
-
 
 
 class OrderListSerializer(serializers.ModelSerializer):

@@ -23,7 +23,7 @@ class OrderAdmin(UnfoldModelAdmin):
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('user', 'total_price', 'free_case_count', 'status')
+            'fields': ('user', 'total_price', 'free_case_count', 'status', 'discount', 'welcome_discount')
         }),
         ('Даты', {
             'fields': ('created_at', 'updated_at'),
