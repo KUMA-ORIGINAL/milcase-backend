@@ -2,6 +2,8 @@ from datetime import datetime, timedelta
 
 from django.utils import timezone
 
+from promotions.models import Holiday
+
 CLUSTER_GIFT_BUYERS = 'K2'
 CLUSTER_FREQUENT = 'K3'
 CLUSTER_DORMANT = 'K4'
@@ -18,14 +20,9 @@ def determine_cluster(user):
     last_order = order_dates[-1]
 
     # === К2: Подарочники (все покупки около праздников)
-    holidays = [
-        datetime(now.year, 3, 8),
-        datetime(now.year, 2, 23),
-        datetime(now.year, 6, 1),
-        datetime(now.year, 12, 30),
-    ]
+    holidays = Holiday.objects.all()
+    holidays = [datetime(now.year, h.month, h.day).date() for h in holidays]
 
-    # Добавим день рождения, если он задан
     if user.birthdate:
         holidays.append(user.birthdate.replace(year=now.year))
 

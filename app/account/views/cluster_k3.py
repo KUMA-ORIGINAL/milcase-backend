@@ -31,7 +31,6 @@ def trending_recommendations(request):
             is_hidden=False,
         ).distinct().order_by('-created_at')[:10]
     else:
-        # Если избранных нет, просто последние новинки
         products = Product.objects.filter(
             created_at__gte=since,
             is_hidden=False,
