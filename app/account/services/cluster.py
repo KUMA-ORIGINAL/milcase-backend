@@ -21,13 +21,13 @@ def determine_cluster(user):
 
     # === К2: Подарочники (все покупки около праздников)
     holidays = Holiday.objects.all()
-    holidays = [datetime(now.year, h.month, h.day).date() for h in holidays]
+    holiday_dates = [datetime(now.year, h.month, h.day).date() for h in holidays]
 
     if user.birthdate:
         holidays.append(user.birthdate.replace(year=now.year))
 
     def is_near_holiday(order_date):
-        return any(abs((order_date.date() - holiday.date()).days) <= 3 for holiday in holidays)
+        return any(abs((order_date.date() - holiday_date).days) <= 3 for holiday_date in holiday_dates)
 
     holiday_orders_count = sum(is_near_holiday(od) for od in order_dates)
 
