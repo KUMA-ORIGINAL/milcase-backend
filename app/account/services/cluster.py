@@ -24,7 +24,7 @@ def determine_cluster(user):
     holiday_dates = [datetime(now.year, h.month, h.day).date() for h in holidays]
 
     if user.birthdate:
-        holidays.append(user.birthdate.replace(year=now.year))
+        holiday_dates.append(user.birthdate.replace(year=now.year))
 
     def is_near_holiday(order_date):
         return any(abs((order_date.date() - holiday_date).days) <= 3 for holiday_date in holiday_dates)
