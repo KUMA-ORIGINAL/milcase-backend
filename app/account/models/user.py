@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField
 from pilkit.processors import ResizeToFill
 
+from account.models import PhoneModel
 from products.models import Product
 from promotions.models import BirthdayDiscountSettings
 
@@ -18,6 +19,10 @@ class UserManager(BaseUserManager):
         """
         if not email:
             raise ValueError(_("The Email field is required"))
+
+        phone_model = extra_fields.get("phone_model")
+        if isinstance(phone_model, int):
+            extra_fields["phone_model"] = PhoneModel.objects.get(pk=phone_model)
 
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
