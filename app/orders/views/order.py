@@ -8,7 +8,8 @@ from ..serializers import OrderCreateSerializer, OrderListSerializer
 @extend_schema(tags=['Order'])
 class OrderViewSet(viewsets.GenericViewSet,
                    mixins.ListModelMixin,
-                   mixins.CreateModelMixin):
+                   mixins.CreateModelMixin,
+                   mixins.UpdateModelMixin):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_serializer_class(self):
